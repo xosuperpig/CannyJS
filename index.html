@@ -1,0 +1,24 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <canvas id="canvas" width="1100" height="1500"></canvas>
+        <canvas id="canvas2" width="1100" height="1500"></canvas>
+        <img id="image" src="./WechatIMG12.jpeg" style="visibility:hidden" alt="">
+        <script src="./canny.js"></script>
+        <script>
+            let canvas = document.getElementById("canvas");
+            let context = canvas.getContext('2d');
+
+            let image = document.getElementById("image");
+
+            image.onload = function() {
+                context.drawImage(image, 0, 0);
+    
+                let cannyResult = CannyJS.canny(canvas, 100, 50, 1.4, 3);
+                cannyResult.drawOn(document.getElementById("canvas2"))
+            }
+        </script>
+    </body>
+</html>
